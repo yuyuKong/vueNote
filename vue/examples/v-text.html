@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text & v-html 实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-text & v-html 实例</h1>
+<hr>
+<div id="app">
+    <!--双括号的模板方式弊端：
+        1.网速很慢，可能会直接原样输出
+        2.js有报错，也会原样输出
+        用v-text代替会好一点，以上情况什么都不输出
+    -->
+    <div>{{message}}</div>
+    <div v-text="message"></div>
+    <div>{{htmlMessage}}</div>
+    <div v-html="htmlMessage"></div>
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"Hello World",
+            htmlMessage:"<h12>Hello World</h12>"
+        }
+    })
+</script>
+</html>
