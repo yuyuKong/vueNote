@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-model数据源绑定实例</h1>
+<hr>
+<div id="app">
+    <h3>输入框</h3>
+    <hr>
+    <p>{{message}}</p>
+    <p>v-model:<input type="text" v-model="message"></p>
+
+    <h3>修饰符</h3>
+    <hr>
+    <p>v-model.lazy:<input type="text" v-model.lazy="message"> 取代 imput 监听 change 事件</p>
+    <p>v-model.number:<input type="text" v-model.number="message"> 输入字符串转为数字，如果刚开始输入字符串就默认为字符串</p>
+    <p>v-model.trim:<input type="text" v-model.trim="message"> 输入去掉首尾空格</p>
+
+    <h3>文本域</h3>
+    <hr>
+    <textarea cols="30" rows="10" v-model="message"></textarea>
+
+    <h3>多选框绑定一个值</h3>
+    <hr>
+    <input type="checkbox" id="isTrue" v-model="isTrue">
+    <label for="isTrue">{{isTrue}}</label>
+
+    <h3>多选框绑定数组</h3>
+    <hr>
+    <input type="checkbox" id="zs" value="zs" v-model="name">
+    <label for="zs">zs</label>
+    <input type="checkbox" id="ls" value="ls" v-model="name">
+    <label for="zs">ls</label>
+    <input type="checkbox" id="ww" value="ww" v-model="name">
+    <label for="zs">ww</label>
+    <p>{{name}}</p>
+
+    <h3>单选框</h3>
+    <hr>
+    <input type="radio" id="men" value="男" v-model="sex">
+    <label for="men">男</label>
+    <input type="radio" id="women" value="女" v-model="sex">
+    <label for="men">女</label>
+    <p>{{sex}}</p>
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"Hello World",
+            isTrue:true,
+            name:[],
+            sex:"男"
+        }
+    })
+</script>
+</html>
