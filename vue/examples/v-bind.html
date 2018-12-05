@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-bind实例</h1>
+<hr>
+<div id="app">
+    <p><img :src="imgUrl" width="200px"></p>
+    <p><a :href="jsUrl">jsPang</a></p>
+    <hr>
+    <h3>绑定class</h3>
+    <div :class="className">1.直接绑定类名</div>
+    <div :class="{classA:isTrue}">2.判断是否加某个类:注意这里直接写类名，不需要在data中定义变量</div>
+    <div :class="isTrue ? classA : classB">3.三元表达式绑定类名:注意这里需要在data中声明变量</div>
+    <p>
+        <input type="checkbox" id="isTrue" v-model="isTrue">
+        <label for="isTrue">isTrue:{{isTrue}}</label>
+    </p>
+    <hr>
+    <h3>绑定style</h3>
+    <div :style="{color:red,fontSize:font}">1.绑定style:注意vue里面用驼峰写法</div>
+    <div :style="styleObj">2.对象绑定style</div>
+</div>
+</body>
+<style>
+    .classA{
+        color: red;
+    }
+    .classB{
+        font-size: 150%;
+    }
+</style>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            imgUrl:'http://fmn.rrimg.com/fmn063/xiaozhan/20130414/2210/original_aghz_493400004c9d118c.jpg',
+            jsUrl:'http://jspang.com/',
+            className:"classA",
+            isTrue:false,
+            classA:"classA",
+            classB:"classB",
+            red:"red",
+            font:"20px",
+            styleObj:{
+                color:"green",
+                fontSize:"16px"
+            }
+        }
+    })
+</script>
+</html>
