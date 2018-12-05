@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-on实例</h1>
+<hr>
+<div id="app">
+    本场得分：{{score}}<br>
+    <button v-on:click="add">加分</button>
+    <button v-on:click="sub">减分</button>
+    <br>
+    增加步值：<input type="text" v-model="step" @keyup.enter="onEnter">
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            score:0,
+            step:1
+        },
+        methods:{
+            add:function () {
+                this.score ++;
+            },
+            sub:function () {
+                this.score --;
+            },
+            onEnter:function () {
+                this.score = this.score + parseInt(this.step);//注意文本框会将数字转化成字符串
+            }
+        }
+    })
+</script>
+</html>
