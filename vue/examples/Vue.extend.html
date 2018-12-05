@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.extend 扩展实例构造器</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Vue.extend 扩展实例构造器</h1>
+<hr>
+    <div id="autor">yuyu</div>
+<br>
+    <autor>yuyu</autor>
+</body>
+<script>
+    //扩展
+    var autorExtend = Vue.extend({
+        template:"<a :href='autorUrl'>{{autorName}}</a>",
+        data:function () {
+            //注意这里的data要用一个方程 return 一个对象
+            return {
+               autorUrl:'http://www.jspang.com',
+                autorName:'yuyu'
+            }
+        }
+    })
+    //挂载
+    //通过id挂载
+    new autorExtend().$mount("#autor");
+    //通过标签名挂载
+    new autorExtend().$mount("autor");
+</script>
+</html>
