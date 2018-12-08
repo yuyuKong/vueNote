@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件 component</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>vue组件 component</h1>
+<hr>
+<div id="app">
+    <!--注意短横线命名在js要用小驼峰命名-->
+    <Bocai style="color: red;" only-me="yuyu"></Bocai>
+    <!--挂载的绑定方式-->
+    <Bocai :only-me="my"></Bocai>
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            my:"Yuyu"
+        },
+        components:{
+            "Bocai":{
+                template:`
+                    <div>Bocai loved {{ onlyMe }}</div>
+                `,
+                props:['onlyMe']
+            }
+
+        }
+    })
+</script>
+</html>
