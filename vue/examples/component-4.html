@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component标签</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>component标签</h1>
+<hr>
+<div id="app">
+    <!--conponent标签是Vue框架自定义的标签，它的用途就是可以动态绑定我们的组件，根据数据的不同更换不同的组件。-->
+    <component :is="who"></component>
+    <p><button @click="changeConponent">改变组件</button></p>
+</div>
+</body>
+<script>
+    var componentA={
+        template:`<div style="color:red;">I'm componentA</div>`
+    }
+    var componentB={
+        template:`<div style="color:green;">I'm componentB</div>`
+    }
+    var componentC={
+        template:`<div style="color:pink;">I'm componentC</div>`
+    }
+    var app = new Vue({
+        el:"#app",
+        data:{
+            who:'componentA'
+        },
+        components:{
+            "componentA":componentA,
+            "componentB":componentB,
+            "componentC":componentC,
+        },
+        methods:{
+            changeConponent:function () {
+                if(this.who == "componentA"){
+                    this.who = "componentB";
+                }else if(this.who == "componentB"){
+                    this.who = "componentC";
+                }else{
+                    this.who = "componentA"
+                }
+            }
+        }
+    })
+</script>
+</html>
