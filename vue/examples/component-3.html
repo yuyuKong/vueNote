@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件 component 父子组件</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>vue组件 component 父子组件</h1>
+<hr>
+<div id="app">
+    <Bocai style="color: green;"></Bocai>
+</div>
+</body>
+<script>
+    var Son = {
+        template:`
+           <div>我是菠菜的子组件</div>
+        `
+    }
+    //在构造器外部声明局部组件
+    var bocaiComponent = {
+        template:`
+        <div>
+            <p>我是局部的Bocai组件</p>
+            <Son></Son>
+        </div>
+        `,
+         components:{
+            "Son":Son
+         }
+    }
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"Hello World11111"
+        },
+        components:{
+            "bocai":bocaiComponent
+        }
+    })
+</script>
+</html>
