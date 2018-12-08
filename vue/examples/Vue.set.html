@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.set</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Vue.set</h1>
+<hr>
+    <div id="app">
+        {{count}}
+        <hr>
+        <h3>改变数组</h3>
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+    </div>
+    <p><button onclick="add()">add</button></p>
+    <p><button onclick="changeArr()">改变数组</button></p>
+<ul>
+    <li>1.使用Vue.set  Vue.set(outData,'count',2);</li>
+    <li>2.使用Vue对象  app.count ++</li>
+    <li>3.原生js直接操作  outData.count++</li>
+</ul>
+<ul>
+    <li>1.当使用索引去改变一个值时，vue不会自动更新</li>
+    <li>2.当改变数组的长度时，vue不会自动更新</li>
+
+</ul>
+
+</body>
+<script>
+    function add() {
+//        Vue.set(outData,'count',2);
+//        app.count ++ ;
+        outData.count++;
+        //这里可以执行
+        outData.arr[1]="dd";
+    }
+    function changeArr() {
+        //这里不会执行，Vue检测不到数组索引和长度的变化
+//        outData.arr[1]="dd";
+        //使用Vue.set可以实现
+        Vue.set(outData.arr,'1','dd');
+    }
+    var outData = {
+        count:1,
+        arr:["aaa","bbb","ccc"]
+    }
+    var app = new Vue({
+        el:"#app",
+        //引用构造器外边的数据
+        data:outData
+    })
+</script>
+</html>

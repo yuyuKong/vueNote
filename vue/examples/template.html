@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 模板的三种写法</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>vue模板的三种写法</h1>
+<hr>
+<div id="app">
+
+</div>
+<!--方法二：直接在template标签对里面写  比较简单  通过选择器绑定在template选项-->
+<template id="dd2">
+    <h1 style="color:red">我是Template标签模板</h1>
+</template>
+<!--方法二：直接在script标签对里面写,注意type  可以通过src外部引入 通过选择器绑定在template选项-->
+<script type="x-template" id="dd3">
+    <h1 style="color:red">我是Script标签模板</h1>
+</script>
+</body>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"Hello World11111"
+        },
+        template:"#dd3"
+        //写法1：直接写在选项里面，适合比较短的代码段
+//        template:`
+//             <h1 style="color:red">我是选项模板</h1>
+//        `
+    })
+</script>
+</html>

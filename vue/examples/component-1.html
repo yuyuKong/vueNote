@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件 component</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>vue组件 component</h1>
+<hr>
+<div id="app">
+    <Yuyu style="color: red;"></Yuyu>
+    <Bocai style="color: green;"></Bocai>
+</div>
+</body>
+<script>
+    //全局注册组件
+    Vue.component("Yuyu",{
+        template:`
+            <div>我是全局的yuyu组件</div>
+        `
+    })
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"Hello World11111"
+        },
+        components:{
+            "bocai":{
+                template:`
+                    <div>我是局部的Bocai组件</div>
+                `
+            }
+        }
+    })
+</script>
+</html>
