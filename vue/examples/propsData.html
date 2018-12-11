@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>propsData</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>propsData</h1>
+<hr>
+<header></header>
+</body>
+<script>
+    //扩展
+    var headerExtend = Vue.extend({
+        template:`
+            <p>{{message}}-{{a}}</p>
+        `,
+        data:function () {
+            return{
+                message:"Hello,I am header."
+            }
+        },
+        props:['a']
+    })
+    //挂载
+//    new headerExtend().$mount("header");
+    //挂载的时候传值
+    new headerExtend({propsData:{a:2}}).$mount("header");
+</script>
+</html>
