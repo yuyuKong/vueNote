@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods选项</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>methods选项</h1>
+<ul>
+    <li>1.直接在标签内调用</li>
+    <li>2.自定义组件调用   @click.native</li>
+    <li>3.构造器外调用   app.add()  注意这里没有$event对象</li>
+</ul>
+<hr>
+<div id="app">
+    <p>{{num}}</p>
+    <button @click="add(1,$event)">add</button>
+    <!--自定义组件调用方法-->
+    <p><btn @click.native="add(2,$event)"></btn></p>
+
+</div>
+<!--构造器外调用方法-->
+<button onclick="app.add(3)">构造器外ADD</button>
+</body>
+<script>
+    var btn = {
+        template:`
+            <button>自定义ADD</button>
+        `
+    }
+    var app = new Vue({
+        el:"#app",
+        data:{
+            num:1
+        },
+        components:{
+          "btn":btn
+        },
+        methods:{
+            add:function (step,event) {
+                console.log(event)
+                if(step!=''){
+                    this.num += step;
+                }else{
+                    this.num ++;
+                }
+            }
+        }
+    })
+</script>
+</html>
