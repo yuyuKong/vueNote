@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例方法</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Vue实例方法</h1>
+<hr>
+<Message></Message>
+<button onclick="destroy()">销毁</button>
+<button onclick="reload()">刷新</button>
+<button onclick="tick()">更新</button>
+</body>
+<script>
+    var Message = Vue.extend({
+        template:`
+            <p>{{message}}</p>
+        `,
+        //注意扩展里面的data要用方法返回值
+        data:function () {
+            return{
+                message:"小太阳"
+            }
+        },
+        mounted:function () {
+            console.log("mounted挂载完成")
+        },
+        destroyed:function () {
+            console.log("destroy销毁完成")
+        },
+        updated:function () {
+            console.log("update之后")
+        }
+    })
+    //挂载    生命周期mounted
+   var vm = new Message().$mount("Message");
+    //销毁   生命周期destroyed
+    function destroy() {
+        vm.$destroy()
+    }
+    //刷新   生命周期updated
+    function reload() {
+        vm.$forceUpdate();
+    }
+    //更新  当Vue构造器里的data值被修改完成后会调用这个方法，也相当于一个钩子函数吧，和构造器里的updated生命周期很像。
+    function tick(){
+        vm.message="update message info ";
+        vm.$nextTick(function(){
+            console.log('message更新完后我被调用了');
+        })
+    }
+</script>
+</html>

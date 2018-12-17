@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例属性</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+</head>
+<body>
+<h1>Vue实例属性</h1>
+<hr>
+<p>实例属性是为了兼容其他框架</p>
+<p>jq使用的时候必须在monted和updated里面使用，也就是已经有了元素</p>
+<div id="app">{{message}}</div>
+</body>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"我是vue"
+        },
+        methods:{
+            add:function () {
+                console.log("外部调用");
+
+            }
+        },
+        //在vue中使用jq
+        mounted:function () {
+            $("#app").html("我是jq");
+        }
+    })
+    //在外部调用构造器内方法
+    app.add();
+    //实例app的属性和方法
+    console.log(app);
+</script>
+</html>
