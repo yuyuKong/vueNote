@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue内置组件slot</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>vue内置组件slot</h1>
+<hr>
+<div id="app">
+    <Yuyu>
+        <span slot="name">{{yuyuData.name}}</span>
+        <span slot="skill">{{yuyuData.skill}}</span>
+    </Yuyu>
+    <Bocai name="菠菜" skill="web前端"></Bocai>
+</div>
+<template id="yu">
+    <!--注意这里需要一个根元素包裹-->
+    <div>
+        <p>名字：<slot name="name"></slot></p>
+        <p>技术：<slot name="skill"></slot></p>
+    </div>
+</template>
+<template id="cai">
+    <div>
+        <p>名字：{{name}}</p>
+        <p>技术：{{skill}}</p>
+    </div>
+</template>
+</body>
+<script>
+    var Yuyu = {
+        template:"#yu"
+    }
+    var Bocai = {
+        template:"#cai",
+        props:["name","skill"]
+    }
+    var app = new Vue({
+        el:"#app",
+        data:{
+            yuyuData:{
+                name:"yuyu",
+                skill:"web前端"
+            }
+        },
+        components:{
+            "Yuyu":Yuyu,
+            "Bocai":Bocai
+        }
+    })
+</script>
+</html>
